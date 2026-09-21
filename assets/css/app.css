@@ -151,3 +151,18 @@ body:not(.cosmic-reveal) .header{opacity:1;transition:opacity .5s ease}
 @media(prefers-reduced-motion:reduce){.cosmic-spacecraft{animation:none}}
 
 .cosmic-spacecraft{cursor:pointer}.cosmic-spacecraft:focus{outline:1px solid #fff;outline-offset:6px;color:#fff}.cosmic-spacecraft:hover{color:#ff0c3a}
+/* Focus mode: remove archive chrome when the cosmic scene takes over. */
+body.cosmic-reveal .archive-console,
+body.cosmic-reveal .modern-art-layer,
+body.cosmic-reveal .celestial-observatory{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:scale(.96)!important}
+body.cosmic-reveal .cosmic-distance{opacity:.18}
+body.cosmic-reveal .cosmic-spacecraft span{opacity:.32}
+body.cosmic-reveal .cosmic-spacecraft{font-size:7px;opacity:.8}
+@media(max-width:768px){
+  body.cosmic-reveal .cosmic-spacecraft{opacity:.32}
+  body.cosmic-reveal .cosmic-spacecraft span{display:none}
+  body.cosmic-reveal .cosmic-distance{display:none}
+  body.cosmic-reveal .cosmic-stage{top:53%;width:105vw;height:105vw}
+  body.cosmic-reveal .cosmic-hero__copy{top:9%}
+  body.cosmic-reveal .cosmic-hero__copy>p:not(.cosmic-kicker){max-width:245px}
+}
