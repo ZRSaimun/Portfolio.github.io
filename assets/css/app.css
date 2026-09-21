@@ -222,3 +222,9 @@ body.cosmic-journey-mode .celestial-observatory{opacity:0!important;visibility:h
 .journey-ladder button:nth-child(2) b{animation-delay:-.3s}.journey-ladder button:nth-child(3) b{animation-delay:-.6s}.journey-ladder button:nth-child(4) b{animation-delay:-.9s}
 @keyframes journey-nebula{to{transform:rotate(360deg)}}@keyframes journey-orbit{to{transform:translate(-50%,-50%) rotate(340deg) scaleY(.38)}}@keyframes journey-node-pulse{0%,100%{box-shadow:0 0 0 rgba(255,12,58,0)}50%{box-shadow:0 0 24px rgba(255,12,58,.28)}}
 @media(prefers-reduced-motion:reduce){.cosmic-journey-stage:after,.cosmic-journey-stage:before,.journey-ladder button b{animation:none}}
+
+/* Do not allow legacy portfolio chrome to leak into the moving cosmic story. */
+body.cosmic-reveal .js-smooth,
+body.cosmic-journey-mode .js-smooth{visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+body.cosmic-reveal .archive-console,
+body.cosmic-journey-mode .archive-console{display:none!important}
