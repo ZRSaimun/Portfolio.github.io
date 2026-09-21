@@ -1049,13 +1049,13 @@
 <script>
 (function(){
   var data={
-   mercury:{title:'Mercury',body:'The smallest planet and the closest to the Sun. MESSENGER mapped its surface and found evidence of ancient volcanism and polar water ice.',facts:'TERRESTRIAL · MESSENGER'},
-   venus:{title:'Venus',body:'A world of extreme heat and pressure. Soviet Venera landers reached the surface, while Magellan used radar to reveal its volcanic landscape.',facts:'TERRESTRIAL · VENERA · MAGELLAN'},
-   earth:{title:'Earth',body:'Our home: a small living world travelling with the Sun through the Milky Way. The archive begins here—with curiosity, humility and wonder.',facts:'TERRESTRIAL · OUR HOME · ONE WORLD'},
-   mars:{title:'Mars',body:'Mars once had rivers and lakes. Viking, Spirit, Opportunity, Curiosity, InSight, Hope, Zhurong and Perseverance have transformed our understanding of its geology and ancient habitability.',facts:'TERRESTRIAL · ROVERS · ORBITERS'},
-   jupiter:{title:'Jupiter',body:'The giant planet and its moons. Galileo and Juno studied its atmosphere and magnetic field; Europa remains one of the most important ocean-world targets.',facts:'GAS GIANT · GALILEO · JUNO'},
-   saturn:{title:'Saturn',body:'Cassini revealed water-rich plumes from Enceladus and explored Titan’s methane lakes. Huygens landed on Titan in 2005.',facts:'GAS GIANT · CASSINI · HUYGENS'},
-   neptune:{title:'Neptune',body:'Voyager 2 remains the only spacecraft to visit Neptune up close, revealing powerful atmospheric activity and a complex moon and ring system.',facts:'ICE GIANT · VOYAGER 2'}
+   mercury:{title:'Mercury',body:'The smallest planet and the closest to the Sun. MESSENGER mapped its surface and found evidence of ancient volcanism and polar water ice.',facts:'TERRESTRIAL · MESSENGER',orbit:'Sun',period:'88 Earth days'},
+   venus:{title:'Venus',body:'A world of extreme heat and pressure. Soviet Venera landers reached the surface, while Magellan used radar to reveal its volcanic landscape.',facts:'TERRESTRIAL · VENERA · MAGELLAN',orbit:'Sun',period:'225 Earth days'},
+   earth:{title:'Earth',body:'Our home: a small living world travelling with the Sun through the Milky Way. The archive begins here—with curiosity, humility and wonder.',facts:'TERRESTRIAL · OUR HOME · ONE WORLD',orbit:'Sun · Moon orbits Earth',period:'365.25 Earth days'},
+   mars:{title:'Mars',body:'Mars once had rivers and lakes. Viking, Spirit, Opportunity, Curiosity, InSight, Hope, Zhurong and Perseverance have transformed our understanding of its geology and ancient habitability.',facts:'TERRESTRIAL · ROVERS · ORBITERS',orbit:'Sun',period:'687 Earth days'},
+   jupiter:{title:'Jupiter',body:'The giant planet and its moons. Galileo and Juno studied its atmosphere and magnetic field; Europa remains one of the most important ocean-world targets.',facts:'GAS GIANT · GALILEO · JUNO',orbit:'Sun',period:'11.86 Earth years'},
+   saturn:{title:'Saturn',body:'Cassini revealed water-rich plumes from Enceladus and explored Titan’s methane lakes. Huygens landed on Titan in 2005.',facts:'GAS GIANT · CASSINI · HUYGENS',orbit:'Sun',period:'29.45 Earth years'},
+   neptune:{title:'Neptune',body:'Voyager 2 remains the only spacecraft to visit Neptune up close, revealing powerful atmospheric activity and a complex moon and ring system.',facts:'ICE GIANT · VOYAGER 2',orbit:'Sun',period:'164.8 Earth years'}
   };
 
   var missions={
@@ -1066,7 +1066,7 @@
   };
   var info=document.querySelector('[data-cosmic-info]');
   var title=info.querySelector('h3'), body=info.querySelector('.cosmic-info__body'), facts=info.querySelector('.cosmic-info__facts');
-  function open(key){var d=data[key];if(!d)return;title.textContent=d.title;body.textContent=d.body;facts.innerHTML='<span>PROFILE <b>'+d.facts+'</b></span>';info.classList.add('is-open');}
+  function open(key){var d=data[key];if(!d)return;title.textContent=d.title;body.textContent=d.body;facts.innerHTML='<span>PROFILE <b>'+d.facts+'</b></span><span>ORBIT <b>'+d.orbit+'</b></span><span>PERIOD <b>'+d.period+'</b></span>';info.classList.add('is-open');}
   document.querySelectorAll('[data-cosmic]').forEach(function(el){el.addEventListener('click',function(){open(el.dataset.cosmic);});});
   document.querySelector('[data-cosmic-close]').addEventListener('click',function(){info.classList.remove('is-open');});
   var atlas=document.querySelector('[data-mission-atlas]'), atlasTitle=atlas.querySelector('[data-atlas-title]'), atlasSummary=atlas.querySelector('[data-atlas-summary]'), atlasTimeline=atlas.querySelector('[data-atlas-timeline]'), atlasType=atlas.querySelector('[data-atlas-type]'), atlasSource=atlas.querySelector('[data-atlas-source]');
