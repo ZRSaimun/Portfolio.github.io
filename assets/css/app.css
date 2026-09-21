@@ -317,3 +317,28 @@ body.cosmic-journey-mode.journey-step-9 .journey-ladder button:nth-child(8){opac
 .journey-fact-panel{position:absolute;z-index:20;left:8vw;bottom:12vh;width:min(360px,36vw);padding:24px 26px;background:rgba(4,4,10,.88);border:1px solid rgba(255,12,58,.65);box-shadow:0 0 40px rgba(255,12,58,.18),inset 0 0 35px rgba(255,255,255,.025);backdrop-filter:blur(18px);opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease,visibility .5s}.journey-fact-panel.is-open{opacity:1;visibility:visible;transform:translateY(0)}
 .journey-fact-panel__close{position:absolute;right:12px;top:8px;border:0;background:none;color:#fff;font-size:25px;cursor:pointer}.journey-fact-panel__eyebrow{margin:0 0 14px;color:#ff0c3a;font:10px Romana,serif;letter-spacing:.18em}.journey-fact-panel h3{margin:0 0 10px;color:#fff;font:28px Romana,serif}.journey-fact-panel body{}.journey-fact-panel__body,.journey-fact-panel>p:not(.journey-fact-panel__eyebrow){color:rgba(255,255,255,.68);font:14px/1.55 Romana,serif;margin:0 0 16px}.journey-fact-panel__meta{padding-top:12px;border-top:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.45);font:9px/1.4 Arial,sans-serif;letter-spacing:.14em}.journey-ladder button{cursor:pointer}.journey-ladder button:focus-visible{outline:2px solid #fff;outline-offset:6px}
 @media(max-width:768px){.journey-fact-panel{left:8vw;right:8vw;bottom:8vh;width:auto;padding:20px}.journey-fact-panel h3{font-size:24px}.journey-fact-panel>p:not(.journey-fact-panel__eyebrow){font-size:12px}}
+
+/* Final cinematic layout polish: keep the cosmic journey clean on every screen. */
+body.cosmic-journey-mode .cosmic-journey-stage{z-index:9999;isolation:isolate;overflow:hidden}
+body.cosmic-journey-mode .journey-stage__header,body.cosmic-journey-mode .journey-stage__copy,body.cosmic-journey-mode .journey-visual,body.cosmic-journey-mode .journey-ladder,body.cosmic-journey-mode .journey-fact-panel{will-change:transform,opacity}
+.journey-visual__item span{z-index:4;text-shadow:0 0 12px #000,0 0 20px #000}
+.journey-visual-step-1 .journey-visual__earth i,.journey-visual-step-2 .journey-visual__moon i,.journey-visual-step-3 .journey-visual__solar i{box-shadow:0 0 42px currentColor,0 0 150px rgba(255,12,58,.45)}
+.journey-ladder button span,.journey-ladder button small{position:relative;z-index:2;text-shadow:0 2px 12px #000}
+@media(min-width:769px){.journey-visual{left:72%;top:52%;width:min(37vw,540px);height:min(37vw,540px)}.journey-ladder{right:6%;width:39%;top:54%}.journey-stage__copy{width:36%}}
+@media(max-width:768px){
+ body.cosmic-journey-mode .cosmic-journey-stage{min-height:100svh}
+ .journey-stage__header{top:3.5vh;z-index:8}
+ .journey-stage__copy{top:12%;z-index:8}
+ .journey-stage__copy h2{font-size:42px!important;line-height:.95!important}
+ .journey-stage__detail{font-size:11px;line-height:1.4;max-width:215px}
+ .journey-visual{left:50%;top:40%;width:72vw;height:72vw;z-index:3}
+ .journey-visual__item span{bottom:-2%;font-size:7px}
+ .journey-ladder{left:7vw;right:7vw;top:68%;height:24%;z-index:7}
+ .journey-ladder:before{top:-100%;bottom:-70%;opacity:.45}
+ .journey-ladder button{width:100%;grid-template-columns:45px minmax(0,1fr);column-gap:10px}
+ .journey-ladder button b{width:45px;height:45px;font-size:11px}
+ .journey-ladder button span{font-size:19px;white-space:nowrap}
+ .journey-ladder button small{font-size:8px}
+ .journey-stage__reflection{display:none}
+ .journey-fact-panel{z-index:30;bottom:3vh;max-height:31vh;overflow:auto}
+}
