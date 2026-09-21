@@ -14,6 +14,7 @@
       <meta name="msapplication-TileColor" content="#000000">
       <meta name="theme-color" content="#ff0c3a">
       <link rel="stylesheet" href="assets/css/app.css" type="text/css" media="all" />
+      <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
       <link rel="preconnect" href="https://hello.myfonts.net">
       <title>ZR Saimun — Creative Web Developer / University Archive</title>
       <meta name="description" content="The original university-era portfolio of ZR Saimun — creative web development, programming and digital experiments."/>
@@ -45,6 +46,7 @@
     <button class="cosmic-enter" type="button" data-cosmic-focus>ENTER THE OBSERVATORY <span>↓</span></button>
   </div>
   <div class="cosmic-stage" data-cosmic-stage>
+    <canvas class="webgl-cosmos" data-webgl-cosmos aria-label="Interactive three-dimensional solar system"></canvas>
     <div class="cosmic-stage__halo"></div>
     <button class="cosmic-sun--hero" data-cosmic="sun" aria-label="Explore the Sun"><b></b></button>
     <div class="cosmic-orbit--hero orbit-mercury"><button class="cosmic-planet planet-mercury" data-cosmic="mercury" aria-label="Explore Mercury"></button></div>
@@ -1151,6 +1153,23 @@
 (function(){var stage=document.querySelector('.cosmic-journey-stage');if(!stage)return;var startY=0,startT=0;stage.addEventListener('touchstart',function(e){if(!e.touches[0])return;startY=e.touches[0].clientY;startT=Date.now()},{passive:true});stage.addEventListener('touchend',function(e){if(!document.body.classList.contains('cosmic-journey-mode')||!e.changedTouches[0])return;var dy=e.changedTouches[0].clientY-startY,dt=Date.now()-startT;if(Math.abs(dy)<55||dt>900)return;var revealEnd=Math.max(window.innerHeight*.22+window.innerHeight*.95,window.innerHeight*1.65),journeyEnd=revealEnd+window.innerHeight*1.35,segment=(journeyEnd-revealEnd)/9,current=Math.max(1,Math.min(9,Math.floor((window.scrollY-revealEnd)/segment)+1)),next=dy<0?Math.min(9,current+1):Math.max(1,current-1);window.scrollTo({top:revealEnd+(next-.5)*segment,behavior:'smooth'});},{passive:true});})();
 
 (function(){if(window.innerWidth>768)return;function draggable(panel,close){var y=0;panel.addEventListener('touchstart',function(e){if(e.touches[0])y=e.touches[0].clientY},{passive:true});panel.addEventListener('touchend',function(e){if(!e.changedTouches[0])return;if(e.changedTouches[0].clientY-y>70)close()},{passive:true})}var info=document.querySelector('[data-cosmic-info]'),atlas=document.querySelector('[data-mission-atlas]');if(info)draggable(info,function(){document.querySelector('[data-cosmic-close]').click()});if(atlas)draggable(atlas,function(){document.querySelector('[data-atlas-close]').click()});})();
+</script>
+
+<script>
+(function(){
+  if(!window.THREE)return;var canvas=document.querySelector('[data-webgl-cosmos]'),stage=document.querySelector('[data-cosmic-stage]');if(!canvas||!stage)return;
+  var T=window.THREE,scene=new T.Scene(),camera=new T.PerspectiveCamera(42,1,.1,1000),renderer=new T.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=T.SRGBColorSpace;
+  var root=new T.Group();scene.add(root);camera.position.set(0,8,19);camera.lookAt(0,0,0);
+  scene.add(new T.AmbientLight(0x332244,1.1));var sunLight=new T.PointLight(0xffa044,5,80);sunLight.position.set(0,0,0);scene.add(sunLight);
+  var stars=new T.BufferGeometry(),pos=[];for(var s=0;s<1600;s++){var radius=35+Math.random()*90,a=Math.random()*Math.PI*2,b=Math.acos(2*Math.random()-1);pos.push(radius*Math.sin(b)*Math.cos(a),radius*Math.cos(b),radius*Math.sin(b)*Math.sin(a))}stars.setAttribute('position',new T.Float32BufferAttribute(pos,3));scene.add(new T.Points(stars,new T.PointsMaterial({color:0xffffff,size:.055,transparent:true,opacity:.8})));
+  var items={};function orbit(radius,color){var pts=[];for(var i=0;i<=96;i++){var a=i/96*Math.PI*2;pts.push(new T.Vector3(Math.cos(a)*radius,0,Math.sin(a)*radius))}var g=new T.BufferGeometry().setFromPoints(pts),l=new T.LineLoop(g,new T.LineBasicMaterial({color:color,transparent:true,opacity:.28}));root.add(l)}
+  var planets=[['mercury',1.25,.13,0xb5a58b,4.2],['venus',1.75,.22,0xd08b52,3.5],['earth',2.35,.24,0x3c8cff,2.8],['mars',2.95,.19,0xd65c3d,2.35],['jupiter',4.0,.55,0xd5a77b,1.6],['saturn',5.1,.46,0xd8bb91,1.2],['uranus',6.2,.34,0x86d7dd,.95],['neptune',7.2,.33,0x4579d7,.75]];
+  var sun=new T.Mesh(new T.SphereGeometry(.82,40,40),new T.MeshBasicMaterial({color:0xff7a24}));root.add(sun);items.sun=sun;
+  planets.forEach(function(p,idx){orbit(p[1],idx<4?0xff7045:0x8b80ff);var m=new T.Mesh(new T.SphereGeometry(p[2],24,24),new T.MeshStandardMaterial({color:p[3],roughness:.8,metalness:.05});m.userData.key=p[0];m.userData.radius=p[1];m.userData.speed=p[4];m.userData.phase=idx*.8;root.add(m);items[p[0]]=m;if(p[0]==='saturn'){var ring=new T.Mesh(new T.RingGeometry(.62,.82,48),new T.MeshBasicMaterial({color:0xc99d72,side:T.DoubleSide,transparent:true,opacity:.7});ring.rotation.x=Math.PI/2; m.add(ring)}});
+  var ray=new T.Raycaster(),mouse=new T.Vector2();function resize(){var r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;camera.aspect=r.width/r.height;camera.updateProjectionMatrix();renderer.setSize(r.width,r.height,false)}window.addEventListener('resize',resize);resize();
+  canvas.addEventListener('pointermove',function(e){var r=canvas.getBoundingClientRect();mouse.x=(e.clientX-r.left)/r.width*2-1;mouse.y=-(e.clientY-r.top)/r.height*2+1});canvas.addEventListener('click',function(){ray.setFromCamera(mouse,camera);var hit=ray.intersectObjects(Object.values(items),false)[0];if(hit&&hit.object.userData.key){var b=document.querySelector('[data-cosmic="'+hit.object.userData.key+'"]');if(b)b.click()}});
+  var clock=new T.Clock();function animate(){requestAnimationFrame(animate);var t=clock.getElapsedTime();planets.forEach(function(p){var m=items[p[0]],a=t*.18*p[4]+m.userData.phase;m.position.set(Math.cos(a)*p[1],Math.sin(a*.7)*.12,Math.sin(a)*p[1]);m.rotation.y+=.01});sun.rotation.y+=.002;root.rotation.y=t*.018;root.rotation.x=Math.sin(t*.12)*.035;root.position.y=Math.sin(t*.2)*.12;renderer.render(scene,camera)}animate();
+})();
 </script>
 </body>
 </html>
