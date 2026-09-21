@@ -207,3 +207,5 @@ body.cosmic-journey-mode.journey-step-7 .journey-stage__stars{transform:scale(1.
 body.cosmic-journey-mode.journey-step-8 .journey-stage__stars{transform:scale(1.455);opacity:0.67} body.cosmic-journey-mode.journey-step-8{background:radial-gradient(circle at 70% 50%,rgba(20,80,150,.12),#020206 58%)}
 body.cosmic-journey-mode.journey-step-9 .journey-stage__stars{transform:scale(1.520);opacity:0.71} body.cosmic-journey-mode.journey-step-9{background:radial-gradient(circle at 70% 50%,rgba(20,80,150,.12),#020206 58%)}
 
+
+.cosmic-info__facts{display:grid;grid-template-columns:1fr;gap:8px}.cosmic-info__facts span{display:flex;justify-content:space-between;gap:10px}.cosmic-info__facts b{text-align:right}
