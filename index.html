@@ -33,6 +33,43 @@
       <script type="text/javascript"> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('href="assets/css/site.webmanifest"'); }</script>
    </head>
    <body>
+      <section class="cosmic-hero" id="cosmic-hero" aria-label="Interactive cosmic opening">
+  <div class="cosmic-hero__stars"></div>
+  <div class="cosmic-hero__nebula"></div>
+  <div class="cosmic-hero__hud"><span class="cosmic-live-dot"></span><span>CELESTIAL ARCHIVE</span><em>SCROLL TO TRAVEL</em></div>
+  <div class="cosmic-hero__copy">
+    <p class="cosmic-kicker">A small world · a vast creation</p>
+    <h2>Beyond the<br/><span>visible.</span></h2>
+    <p>Explore the worlds, missions and discoveries that help us understand the universe around us.</p>
+    <button class="cosmic-enter" type="button" data-cosmic-focus>ENTER THE OBSERVATORY <span>↓</span></button>
+  </div>
+  <div class="cosmic-stage" data-cosmic-stage>
+    <div class="cosmic-stage__halo"></div>
+    <div class="cosmic-sun--hero"><b></b></div>
+    <div class="cosmic-orbit--hero orbit-mercury"><button class="cosmic-planet planet-mercury" data-cosmic="mercury" aria-label="Explore Mercury"></button></div>
+    <div class="cosmic-orbit--hero orbit-venus"><button class="cosmic-planet planet-venus" data-cosmic="venus" aria-label="Explore Venus"></button></div>
+    <div class="cosmic-orbit--hero orbit-earth"><button class="cosmic-planet planet-earth" data-cosmic="earth" aria-label="Explore Earth"></button></div>
+    <div class="cosmic-orbit--hero orbit-mars"><button class="cosmic-planet planet-mars" data-cosmic="mars" aria-label="Explore Mars"></button></div>
+    <div class="cosmic-orbit--hero orbit-jupiter"><button class="cosmic-planet planet-jupiter" data-cosmic="jupiter" aria-label="Explore Jupiter"></button></div>
+    <div class="cosmic-orbit--hero orbit-saturn"><button class="cosmic-planet planet-saturn" data-cosmic="saturn" aria-label="Explore Saturn"></button></div>
+    <div class="cosmic-orbit--hero orbit-neptune"><button class="cosmic-planet planet-neptune" data-cosmic="neptune" aria-label="Explore Neptune"></button></div>
+    <div class="cosmic-route"></div>
+  </div>
+  <div class="cosmic-hero__scroll">SCROLL <span></span> DISCOVER</div>
+  <aside class="cosmic-info" data-cosmic-info aria-live="polite">
+    <button class="cosmic-info__close" type="button" data-cosmic-close>×</button>
+    <p class="cosmic-info__eyebrow">SELECT A WORLD</p>
+    <h3>Earth</h3>
+    <p class="cosmic-info__body">Our home world, moving through a much larger system of creation.</p>
+    <div class="cosmic-info__facts"><span>TYPE< b> TERRESTRIAL</b></span><span>MISSION <b>APOLLO · VOYAGER · WEBB</b></span></div>
+  </aside>
+  <div class="cosmic-missions" data-mission-strip>
+    <button type="button" data-mission="moon">MOON <small>APOLLO · CHANDRAYAAN · CHANG'E</small></button>
+    <button type="button" data-mission="mars">MARS <small>ROVERS · ORBITERS · INGenuity</small></button>
+    <button type="button" data-mission="deep">DEEP SPACE <small>VOYAGER · HUBBLE · WEBB</small></button>
+  </div>
+  <p class="cosmic-reflection">SubhanAllah · look beyond ourselves</p>
+</section>
       <div class="js-smooth">
          <header class="header">
             <div class="header__left">
@@ -977,6 +1014,27 @@
     star.style.animationDuration=(2.5+Math.random()*4)+'s';
     field.appendChild(star);
   }
+})();
+</script>
+<script>
+(function(){
+  var data={
+   mercury:{title:'Mercury',body:'The smallest planet and the closest to the Sun. MESSENGER mapped its surface and found evidence of ancient volcanism and polar water ice.',facts:'TERRESTRIAL · MESSENGER'},
+   venus:{title:'Venus',body:'A world of extreme heat and pressure. Soviet Venera landers reached the surface, while Magellan used radar to reveal its volcanic landscape.',facts:'TERRESTRIAL · VENERA · MAGELLAN'},
+   earth:{title:'Earth',body:'Our home: a small living world travelling with the Sun through the Milky Way. The archive begins here—with curiosity, humility and wonder.',facts:'TERRESTRIAL · OUR HOME · ONE WORLD'},
+   mars:{title:'Mars',body:'Mars once had rivers and lakes. Viking, Spirit, Opportunity, Curiosity, InSight, Hope, Zhurong and Perseverance have transformed our understanding of its geology and ancient habitability.',facts:'TERRESTRIAL · ROVERS · ORBITERS'},
+   jupiter:{title:'Jupiter',body:'The giant planet and its moons. Galileo and Juno studied its atmosphere and magnetic field; Europa remains one of the most important ocean-world targets.',facts:'GAS GIANT · GALILEO · JUNO'},
+   saturn:{title:'Saturn',body:'Cassini revealed water-rich plumes from Enceladus and explored Titan’s methane lakes. Huygens landed on Titan in 2005.',facts:'GAS GIANT · CASSINI · HUYGENS'},
+   neptune:{title:'Neptune',body:'Voyager 2 remains the only spacecraft to visit Neptune up close, revealing powerful atmospheric activity and a complex moon and ring system.',facts:'ICE GIANT · VOYAGER 2'}
+  };
+  var info=document.querySelector('[data-cosmic-info]');
+  var title=info.querySelector('h3'), body=info.querySelector('.cosmic-info__body'), facts=info.querySelector('.cosmic-info__facts');
+  function open(key){var d=data[key];if(!d)return;title.textContent=d.title;body.textContent=d.body;facts.innerHTML='<span>PROFILE <b>'+d.facts+'</b></span>';info.classList.add('is-open');}
+  document.querySelectorAll('[data-cosmic]').forEach(function(el){el.addEventListener('click',function(){open(el.dataset.cosmic);});});
+  document.querySelector('[data-cosmic-close]').addEventListener('click',function(){info.classList.remove('is-open');});
+  document.querySelectorAll('[data-mission]').forEach(function(el){el.addEventListener('click',function(){open(el.dataset.mission==='moon'?'earth':el.dataset.mission==='mars'?'mars':'neptune');});});
+  document.querySelector('[data-cosmic-focus]').addEventListener('click',function(){document.querySelector('.cosmic-hero').classList.add('is-focused');});
+  window.addEventListener('scroll',function(){var y=Math.min(window.scrollY/600,1);var stage=document.querySelector('[data-cosmic-stage]');if(stage){stage.style.setProperty('--scroll-depth',y);stage.style.transform='translate(-50%,-50%) scale('+(1+y*.13)+') rotate('+(y*8-3)+'deg)';}});
 })();
 </script>
 </body>
