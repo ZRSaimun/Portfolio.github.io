@@ -1073,5 +1073,12 @@
   reveal();
 })();
 </script>
+<script>
+(function(){
+  document.querySelectorAll('.cosmic-spacecraft[tabindex]').forEach(function(el){
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});
+  });
+})();
+</script>
 </body>
 </html>
