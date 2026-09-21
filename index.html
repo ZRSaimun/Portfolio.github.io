@@ -947,5 +947,37 @@
   <div class="modern-art-layer__ring modern-art-layer__ring--two"></div>
   <div class="modern-art-layer__label">creative intelligence / <span>active</span></div>
 </div>
+<section class="celestial-observatory" aria-label="Artistic solar system observatory">
+  <div class="celestial-observatory__stars" data-stars></div>
+  <div class="celestial-observatory__caption"><span>THE CELESTIAL OBSERVATORY</span><small>one small world · a vast creation</small></div>
+  <div class="celestial-system">
+    <div class="celestial-system__galaxy"></div>
+    <div class="celestial-orbit celestial-orbit--outer"><i class="celestial-planet celestial-planet--neptune"></i></div>
+    <div class="celestial-orbit celestial-orbit--uranus"><i class="celestial-planet celestial-planet--uranus"></i></div>
+    <div class="celestial-orbit celestial-orbit--saturn"><i class="celestial-planet celestial-planet--saturn"></i></div>
+    <div class="celestial-orbit celestial-orbit--jupiter"><i class="celestial-planet celestial-planet--jupiter"></i></div>
+    <div class="celestial-orbit celestial-orbit--mars"><i class="celestial-planet celestial-planet--mars"></i></div>
+    <div class="celestial-orbit celestial-orbit--earth"><i class="celestial-planet celestial-planet--earth"></i></div>
+    <div class="celestial-orbit celestial-orbit--venus"><i class="celestial-planet celestial-planet--venus"></i></div>
+    <div class="celestial-orbit celestial-orbit--mercury"><i class="celestial-planet celestial-planet--mercury"></i></div>
+    <div class="celestial-sun"><span></span></div>
+  </div>
+  <p class="celestial-observatory__footer">SubhanAllah · a reminder to look beyond ourselves</p>
+</section>
+<script>
+(function(){
+  var field=document.querySelector('[data-stars]');
+  if(!field) return;
+  for(var i=0;i<46;i++){
+    var star=document.createElement('i');
+    star.className='celestial-star';
+    star.style.left=(Math.random()*100)+'%';
+    star.style.top=(Math.random()*100)+'%';
+    star.style.animationDelay=(-Math.random()*5)+'s';
+    star.style.animationDuration=(2.5+Math.random()*4)+'s';
+    field.appendChild(star);
+  }
+})();
+</script>
 </body>
 </html>
