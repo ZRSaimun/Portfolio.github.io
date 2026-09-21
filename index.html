@@ -111,6 +111,13 @@
     <button data-journey="observable"><b>09</b><span>Observable Universe</span><small>the limit of what light can show us</small></button>
   </div>
   <p class="journey-stage__reflection">The larger the view, the smaller our place appears—and the greater the wonder.</p>
+  <aside class="journey-fact-panel" data-journey-fact aria-live="polite" aria-hidden="true">
+    <button type="button" class="journey-fact-panel__close" data-journey-fact-close aria-label="Close cosmic detail">×</button>
+    <p class="journey-fact-panel__eyebrow">COSMIC ADDRESS / SELECTED SCALE</p>
+    <h3 data-journey-fact-title>Earth</h3>
+    <p data-journey-fact-body>Our home planet, moving through space with the Earth–Moon system.</p>
+    <div class="journey-fact-panel__meta" data-journey-fact-meta>GRAVITY · ORBIT · HOME</div>
+  </aside>
 </section>
       <div class="js-smooth">
          <header class="header">
@@ -1132,6 +1139,8 @@
   };
   document.querySelectorAll('[data-journey]').forEach(function(el){el.addEventListener('click',function(){detail.textContent=notes[el.dataset.journey]||'';document.querySelectorAll('[data-journey]').forEach(function(x){x.classList.remove('is-selected')});el.classList.add('is-selected');});});
 })();
+
+(function(){var panel=document.querySelector('[data-journey-fact]');if(!panel)return;var title=panel.querySelector('[data-journey-fact-title]'),body=panel.querySelector('[data-journey-fact-body]'),meta=panel.querySelector('[data-journey-fact-meta]');var facts={earth:['Earth','Our home planet rotates once roughly every 24 hours and travels around the Sun.','HOME · ROTATION · ORBIT'],moon:['Earth–Moon System','The Moon orbits Earth about every 27.3 days while both travel around the Sun.','GRAVITY · TIDAL LOCKING · ORBIT'],solar:['Solar System','The Sun, eight planets, moons, asteroids and comets move together through the Milky Way.','SUN · EIGHT PLANETS · HELIOSPHERE'],orion:['Orion Spur','Our Solar System sits inside this smaller spiral-arm region of the Milky Way.','STARS · NEIGHBOURHOOD · GALAXY'],milky:['Milky Way','A barred spiral galaxy containing our Sun, vast star-forming regions and a central black hole.','GALAXY · STARS · SAGITTARIUS A*'],local:['Local Group','The Milky Way belongs to a gravitationally associated family including Andromeda and Triangulum.','GALAXIES · GRAVITY · FAMILY'],laniakea:['Laniakea','A large region described by the motions of galaxies; it is not a giant planetary orbit.','MOTION · SUPERCLUSTER · SCALE'],web:['Cosmic Web','Across immense distances, galaxies gather along filaments separated by enormous voids.','FILAMENTS · DARK MATTER · VOIDS'],observable:['Observable Universe','The region whose light or signals can reach us; its boundary is an observation limit, not a wall.','LIGHT · EXPANSION · 13.8 BILLION YEARS']};document.querySelectorAll('[data-journey]').forEach(function(btn){btn.addEventListener('click',function(){var f=facts[btn.dataset.journey];if(!f)return;title.textContent=f[0];body.textContent=f[1];meta.textContent=f[2];panel.classList.add('is-open');panel.setAttribute('aria-hidden','false');});});panel.querySelector('[data-journey-fact-close]').addEventListener('click',function(){panel.classList.remove('is-open');panel.setAttribute('aria-hidden','true');});})();
 </script>
 </body>
 </html>
