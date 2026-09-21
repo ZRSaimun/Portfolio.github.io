@@ -87,6 +87,11 @@
       <section class="cosmic-journey-stage" aria-label="From Earth to the observable universe">
   <div class="journey-stage__stars"></div>
   <div class="journey-stage__header"><span>ZOOMING OUT / COSMIC ADDRESS</span><small>SCROLL TO TRAVEL FURTHER</small></div>
+  <div class="journey-flight-hud" data-journey-hud aria-hidden="true">
+    <div class="journey-flight-hud__top"><span>OBSERVATORY FLIGHT</span><b data-journey-hud-step>01 / 09</b></div>
+    <div class="journey-flight-hud__bar"><i data-journey-hud-fill></i></div>
+    <div class="journey-flight-hud__label" data-journey-hud-label>EARTH</div>
+  </div>
   <div class="journey-stage__copy"><p>FROM EARTH</p><h2 data-journey-heading>Where are<br/><span>we?</span></h2><div class="journey-stage__detail" data-journey-detail>Our home is one small world inside a much larger sequence of structures.</div></div>
   <div class="journey-visual" data-journey-visual aria-hidden="true">
   <div class="journey-visual__item journey-visual__earth"><i></i><span>EARTH</span></div>
@@ -1141,6 +1146,8 @@
 })();
 
 (function(){var panel=document.querySelector('[data-journey-fact]');if(!panel)return;var title=panel.querySelector('[data-journey-fact-title]'),body=panel.querySelector('[data-journey-fact-body]'),meta=panel.querySelector('[data-journey-fact-meta]');var facts={earth:['Earth','Our home planet rotates once roughly every 24 hours and travels around the Sun.','HOME · ROTATION · ORBIT'],moon:['Earth–Moon System','The Moon orbits Earth about every 27.3 days while both travel around the Sun.','GRAVITY · TIDAL LOCKING · ORBIT'],solar:['Solar System','The Sun, eight planets, moons, asteroids and comets move together through the Milky Way.','SUN · EIGHT PLANETS · HELIOSPHERE'],orion:['Orion Spur','Our Solar System sits inside this smaller spiral-arm region of the Milky Way.','STARS · NEIGHBOURHOOD · GALAXY'],milky:['Milky Way','A barred spiral galaxy containing our Sun, vast star-forming regions and a central black hole.','GALAXY · STARS · SAGITTARIUS A*'],local:['Local Group','The Milky Way belongs to a gravitationally associated family including Andromeda and Triangulum.','GALAXIES · GRAVITY · FAMILY'],laniakea:['Laniakea','A large region described by the motions of galaxies; it is not a giant planetary orbit.','MOTION · SUPERCLUSTER · SCALE'],web:['Cosmic Web','Across immense distances, galaxies gather along filaments separated by enormous voids.','FILAMENTS · DARK MATTER · VOIDS'],observable:['Observable Universe','The region whose light or signals can reach us; its boundary is an observation limit, not a wall.','LIGHT · EXPANSION · 13.8 BILLION YEARS']};document.querySelectorAll('[data-journey]').forEach(function(btn){btn.addEventListener('click',function(){var f=facts[btn.dataset.journey];if(!f)return;title.textContent=f[0];body.textContent=f[1];meta.textContent=f[2];panel.classList.add('is-open');panel.setAttribute('aria-hidden','false');});});panel.querySelector('[data-journey-fact-close]').addEventListener('click',function(){panel.classList.remove('is-open');panel.setAttribute('aria-hidden','true');});})();
+
+(function(){var hud=document.querySelector('[data-journey-hud]'),step=hud&&hud.querySelector('[data-journey-hud-step]'),fill=hud&&hud.querySelector('[data-journey-hud-fill]'),label=hud&&hud.querySelector('[data-journey-hud-label]');if(!hud)return;var names=['EARTH','EARTH–MOON SYSTEM','SOLAR SYSTEM','ORION SPUR','MILKY WAY','LOCAL GROUP','LANIAKEA','COSMIC WEB','OBSERVABLE UNIVERSE'];var update=function(){var body=document.body;if(!body.classList.contains('cosmic-journey-mode')){hud.setAttribute('aria-hidden','true');return}var n=1;for(var i=1;i<=9;i++)if(body.classList.contains('journey-step-'+i))n=i;hud.setAttribute('aria-hidden','false');step.textContent=(n<10?'0':'')+n+' / 09';label.textContent=names[n-1];fill.style.width=((n/9)*100)+'%'};window.addEventListener('scroll',update,{passive:true});update();})();
 </script>
 </body>
 </html>
