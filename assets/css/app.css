@@ -417,3 +417,6 @@ body[data-cosmic-selected="sun"] .cosmic-sun--hero{filter:drop-shadow(0 0 25px #
 .webgl-cosmos{position:absolute;inset:0;width:100%;height:100%;z-index:2;display:block;pointer-events:auto;cursor:crosshair;opacity:.95}.cosmic-stage>*:not(.webgl-cosmos){z-index:3}.cosmic-stage .webgl-cosmos{mix-blend-mode:screen}.cosmic-stage .cosmic-planet,.cosmic-stage .cosmic-sun--hero{z-index:8}
 @media(max-width:768px){.webgl-cosmos{opacity:.82;cursor:pointer}}
 @media(prefers-reduced-motion:reduce){.webgl-cosmos{opacity:.6}}
+
+/* Interaction repair: HTML hit targets must sit above the WebGL canvas. */
+.cosmic-stage .cosmic-orbit--hero,.cosmic-stage .cosmic-sun--hero,.cosmic-stage .cosmic-planet{position:relative!important;z-index:40!important;pointer-events:auto!important}.cosmic-stage .cosmic-planet{touch-action:manipulation}.cosmic-hero .cosmic-comet,.cosmic-hero .cosmic-probe,.cosmic-hero .cosmic-spacecraft,.cosmic-hero .cosmic-missions,.cosmic-hero .cosmic-enter,.cosmic-hero .cosmic-sound-toggle{z-index:50!important}.webgl-cosmos{z-index:2!important}
