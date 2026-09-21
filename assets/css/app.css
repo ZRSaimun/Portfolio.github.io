@@ -300,3 +300,15 @@ body.cosmic-journey-mode.journey-step-9 .journey-ladder button:nth-child(8){opac
 @media(max-width:768px){.journey-visual:before{inset:12%}.journey-visual:after{inset:24% 0}.journey-visual__item:before{animation-name:journey-particle-orbit-mobile}.journey-visual__item:after{animation-name:journey-particle-orbit-mobile-reverse}}
 @keyframes journey-particle-orbit-mobile{to{transform:rotate(360deg) translateX(105px) rotate(-360deg)}}
 @keyframes journey-particle-orbit-mobile-reverse{to{transform:rotate(-360deg) translateX(82px) rotate(360deg)}}
+
+/* Scroll-driven forward flight: the scene travels as the visitor travels. */
+.journey-visual{transform:translate(-50%,-50%) scale(calc(1 + var(--journey-progress,0)*.22));transition:transform .18s linear}
+.journey-visual:before{animation-duration:calc(12s / var(--journey-speed,1));}
+.journey-visual:after{animation-duration:calc(19s / var(--journey-speed,1));}
+.journey-visual__item:before{animation-duration:calc(7s / var(--journey-speed,1));}
+.journey-visual__item:after{animation-duration:calc(11s / var(--journey-speed,1));}
+.journey-visual:global{will-change:transform}
+.cosmic-journey-stage:after{background:conic-gradient(from 0deg at 62% 50%,transparent 0 15%,rgba(255,12,58,.12) 21%,transparent 29%,rgba(85,50,150,.14) 50%,transparent 67%,rgba(255,255,255,.08) 75%,transparent 82%);}
+.cosmic-journey-stage .journey-visual:global{contain:layout paint}
+@media(max-width:768px){.journey-visual{transform:translate(-54%,-50%) scale(calc(.86 + var(--journey-progress,0)*.2))}}
+@media(prefers-reduced-motion:reduce){.journey-visual{transform:translate(-50%,-50%) scale(1)}}
