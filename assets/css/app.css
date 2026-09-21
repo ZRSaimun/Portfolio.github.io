@@ -209,3 +209,4 @@ body.cosmic-journey-mode.journey-step-9 .journey-stage__stars{transform:scale(1.
 
 
 .cosmic-info__facts{display:grid;grid-template-columns:1fr;gap:8px}.cosmic-info__facts span{display:flex;justify-content:space-between;gap:10px}.cosmic-info__facts b{text-align:right}
+.orbit-uranus{width:90%;height:58%;animation-duration:36s}.planet-uranus{width:18px;height:18px;background:#8ed9db;color:#8ed9db}.cosmic-sun--hero{border:0;padding:0;cursor:pointer}.cosmic-sun--hero:focus{outline:2px solid #fff;outline-offset:8px}
