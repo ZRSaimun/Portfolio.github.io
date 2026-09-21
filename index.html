@@ -88,6 +88,17 @@
   <div class="journey-stage__stars"></div>
   <div class="journey-stage__header"><span>ZOOMING OUT / COSMIC ADDRESS</span><small>SCROLL TO TRAVEL FURTHER</small></div>
   <div class="journey-stage__copy"><p>FROM EARTH</p><h2 data-journey-heading>Where are<br/><span>we?</span></h2><div class="journey-stage__detail" data-journey-detail>Our home is one small world inside a much larger sequence of structures.</div></div>
+  <div class="journey-visual" data-journey-visual aria-hidden="true">
+  <div class="journey-visual__item journey-visual__earth"><i></i><span>EARTH</span></div>
+  <div class="journey-visual__item journey-visual__moon"><i></i><b></b><span>EARTH · MOON</span></div>
+  <div class="journey-visual__item journey-visual__solar"><i></i><b></b><span>SOLAR SYSTEM</span></div>
+  <div class="journey-visual__item journey-visual__orion"><i></i><span>ORION SPUR</span></div>
+  <div class="journey-visual__item journey-visual__milky"><i></i><span>MILKY WAY</span></div>
+  <div class="journey-visual__item journey-visual__local"><i></i><b></b><span>LOCAL GROUP</span></div>
+  <div class="journey-visual__item journey-visual__laniakea"><i></i><span>LANIAKEA</span></div>
+  <div class="journey-visual__item journey-visual__web"><i></i><span>COSMIC WEB</span></div>
+  <div class="journey-visual__item journey-visual__observable"><i></i><span>OBSERVABLE UNIVERSE</span></div>
+</div>
   <div class="journey-ladder" data-journey-ladder>
     <button data-journey="earth"><b>01</b><span>Earth</span><small>our home planet</small></button>
     <button data-journey="moon"><b>02</b><span>Earth–Moon system</span><small>the Moon orbits Earth</small></button>
@@ -1090,7 +1101,7 @@
     document.body.classList.toggle('cosmic-reveal',active);
     document.body.classList.toggle('cosmic-journey-mode',journey);
     for(var step=1;step<=9;step++)document.body.classList.remove('journey-step-'+step);
-    if(journey){var progress=Math.max(0,Math.min(.999,(window.scrollY-revealEnd)/(journeyEnd-revealEnd)));var cosmicStep=Math.floor(progress*9)+1;document.body.classList.add('journey-step-'+cosmicStep);var heading=document.querySelector('[data-journey-heading]'),copy=document.querySelector('[data-journey-detail]');var titles=['Where are<br/><span>we?</span>','The Moon<br/><span>moves.</span>','Our solar<br/><span>system.</span>','Inside the<br/><span>Milky Way.</span>','Our home<br/><span>galaxy.</span>','A family<br/><span>of galaxies.</span>','A region<br/><span>in motion.</span>','The cosmic<br/><span>web.</span>','The visible<br/><span>universe.</span>'];var copies=['Our home is one small world inside a much larger sequence of structures.','The Moon travels around Earth because gravity continually bends its path.','Eight planets and countless smaller worlds travel with the Sun.','The Solar System rests inside the Orion Spur of the Milky Way.','The Sun takes roughly 230 million years to orbit the galactic centre.','The Milky Way belongs to the gravitationally associated Local Group.','Laniakea is defined by galaxy motions, not regular planetary-style orbits.','Gravity and dark matter helped shape filaments, walls and vast voids.','The observable universe is the region whose light has reached us.'];if(heading)heading.innerHTML=titles[cosmicStep-1];if(copy)copy.textContent=copies[cosmicStep-1];}
+    if(journey){var progress=Math.max(0,Math.min(.999,(window.scrollY-revealEnd)/(journeyEnd-revealEnd)));var cosmicStep=Math.floor(progress*9)+1;document.body.classList.add('journey-step-'+cosmicStep);var visual=document.querySelector('[data-journey-visual]');if(visual){for(var v=1;v<=9;v++)visual.classList.remove('journey-visual-step-'+v);visual.classList.add('journey-visual-step-'+cosmicStep);}var heading=document.querySelector('[data-journey-heading]'),copy=document.querySelector('[data-journey-detail]');var titles=['Where are<br/><span>we?</span>','The Moon<br/><span>moves.</span>','Our solar<br/><span>system.</span>','Inside the<br/><span>Milky Way.</span>','Our home<br/><span>galaxy.</span>','A family<br/><span>of galaxies.</span>','A region<br/><span>in motion.</span>','The cosmic<br/><span>web.</span>','The visible<br/><span>universe.</span>'];var copies=['Our home is one small world inside a much larger sequence of structures.','The Moon travels around Earth because gravity continually bends its path.','Eight planets and countless smaller worlds travel with the Sun.','The Solar System rests inside the Orion Spur of the Milky Way.','The Sun takes roughly 230 million years to orbit the galactic centre.','The Milky Way belongs to the gravitationally associated Local Group.','Laniakea is defined by galaxy motions, not regular planetary-style orbits.','Gravity and dark matter helped shape filaments, walls and vast voids.','The observable universe is the region whose light has reached us.'];if(heading)heading.innerHTML=titles[cosmicStep-1];if(copy)copy.textContent=copies[cosmicStep-1];}
     hero.setAttribute('aria-hidden',active?'false':'true');
   }
   window.addEventListener('scroll',reveal,{passive:true});
