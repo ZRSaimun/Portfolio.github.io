@@ -420,3 +420,6 @@ body[data-cosmic-selected="sun"] .cosmic-sun--hero{filter:drop-shadow(0 0 25px #
 
 /* Interaction repair: HTML hit targets must sit above the WebGL canvas. */
 .cosmic-stage .cosmic-orbit--hero,.cosmic-stage .cosmic-sun--hero,.cosmic-stage .cosmic-planet{position:relative!important;z-index:40!important;pointer-events:auto!important}.cosmic-stage .cosmic-planet{touch-action:manipulation}.cosmic-hero .cosmic-comet,.cosmic-hero .cosmic-probe,.cosmic-hero .cosmic-spacecraft,.cosmic-hero .cosmic-missions,.cosmic-hero .cosmic-enter,.cosmic-hero .cosmic-sound-toggle{z-index:50!important}.webgl-cosmos{z-index:2!important}
+
+/* Hide the unfinished legacy occult-era artwork from this respectful university archive. */
+.c-saimun__hero--baphomet,.c-saimun__hero--baphomet-text{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
