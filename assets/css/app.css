@@ -194,3 +194,16 @@ body.cosmic-journey-mode.journey-step-7 .journey-ladder button:nth-child(7){opac
 body.cosmic-journey-mode.journey-step-8 .journey-ladder button:nth-child(8){opacity:1;transform:translateX(0);filter:none} body.cosmic-journey-mode.journey-step-8 .journey-ladder button:nth-child(8) b{background:#ff0c3a;color:#000;box-shadow:0 0 25px rgba(255,12,58,.7)}
 body.cosmic-journey-mode.journey-step-9 .journey-ladder button:nth-child(9){opacity:1;transform:translateX(0);filter:none} body.cosmic-journey-mode.journey-step-9 .journey-ladder button:nth-child(9) b{background:#ff0c3a;color:#000;box-shadow:0 0 25px rgba(255,12,58,.7)}
 
+
+/* Progressive zoom: the visual field expands with every cosmic address step. */
+.journey-stage__stars{transition:transform 1.2s ease,opacity 1.2s ease}
+body.cosmic-journey-mode.journey-step-1 .journey-stage__stars{transform:scale(1.000);opacity:0.39} body.cosmic-journey-mode.journey-step-1{background:radial-gradient(circle at 70% 50%,rgba(255,12,58,.08),#020206 58%)}
+body.cosmic-journey-mode.journey-step-2 .journey-stage__stars{transform:scale(1.065);opacity:0.43} body.cosmic-journey-mode.journey-step-2{background:radial-gradient(circle at 70% 50%,rgba(255,12,58,.08),#020206 58%)}
+body.cosmic-journey-mode.journey-step-3 .journey-stage__stars{transform:scale(1.130);opacity:0.47} body.cosmic-journey-mode.journey-step-3{background:radial-gradient(circle at 70% 50%,rgba(255,12,58,.08),#020206 58%)}
+body.cosmic-journey-mode.journey-step-4 .journey-stage__stars{transform:scale(1.195);opacity:0.51} body.cosmic-journey-mode.journey-step-4{background:radial-gradient(circle at 70% 50%,rgba(90,70,160,.1),#020206 58%)}
+body.cosmic-journey-mode.journey-step-5 .journey-stage__stars{transform:scale(1.260);opacity:0.55} body.cosmic-journey-mode.journey-step-5{background:radial-gradient(circle at 70% 50%,rgba(90,70,160,.1),#020206 58%)}
+body.cosmic-journey-mode.journey-step-6 .journey-stage__stars{transform:scale(1.325);opacity:0.59} body.cosmic-journey-mode.journey-step-6{background:radial-gradient(circle at 70% 50%,rgba(90,70,160,.1),#020206 58%)}
+body.cosmic-journey-mode.journey-step-7 .journey-stage__stars{transform:scale(1.390);opacity:0.63} body.cosmic-journey-mode.journey-step-7{background:radial-gradient(circle at 70% 50%,rgba(20,80,150,.12),#020206 58%)}
+body.cosmic-journey-mode.journey-step-8 .journey-stage__stars{transform:scale(1.455);opacity:0.67} body.cosmic-journey-mode.journey-step-8{background:radial-gradient(circle at 70% 50%,rgba(20,80,150,.12),#020206 58%)}
+body.cosmic-journey-mode.journey-step-9 .journey-stage__stars{transform:scale(1.520);opacity:0.71} body.cosmic-journey-mode.journey-step-9{background:radial-gradient(circle at 70% 50%,rgba(20,80,150,.12),#020206 58%)}
+
