@@ -438,3 +438,11 @@ body[data-cosmic-selected="sun"] .cosmic-sun--hero{filter:drop-shadow(0 0 25px #
  .archive-symbol span{margin:0!important}
  .c-saimun__hero{padding-top:18vw!important}
 }
+
+/* Keep the original university project archive visible beneath the observatory. */
+.c-saimun__works--single{visibility:visible!important;opacity:1!important}
+.c-saimun__works--single .c-saimun__works--info,
+.c-saimun__works--single .c-saimun__works--title,
+.c-saimun__works--single .c-saimun__works--year,
+.c-saimun__works--single .c-saimun__works--single-hover{visibility:visible!important;opacity:1!important}
+.c-saimun__works--single .c-saimun__works--single-hover{transform:translate3d(-50%,-50%,0)!important}
