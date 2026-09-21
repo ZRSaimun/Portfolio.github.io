@@ -83,6 +83,23 @@
   <div class="cosmic-distance"><span>1 AU</span><span>OUTER PLANETS</span><span>INTERSTELLAR SPACE</span></div>
   <p class="cosmic-reflection">SubhanAllah · look beyond ourselves</p>
 </section>
+      <section class="cosmic-journey-stage" aria-label="From Earth to the observable universe">
+  <div class="journey-stage__stars"></div>
+  <div class="journey-stage__header"><span>ZOOMING OUT / COSMIC ADDRESS</span><small>SCROLL TO TRAVEL FURTHER</small></div>
+  <div class="journey-stage__copy"><p>FROM EARTH</p><h2>Where are<br/><span>we?</span></h2><div class="journey-stage__detail" data-journey-detail>Our home is one small world inside a much larger sequence of structures.</div></div>
+  <div class="journey-ladder" data-journey-ladder>
+    <button data-journey="earth"><b>01</b><span>Earth</span><small>our home planet</small></button>
+    <button data-journey="moon"><b>02</b><span>Earth–Moon system</span><small>the Moon orbits Earth</small></button>
+    <button data-journey="solar"><b>03</b><span>Solar System</span><small>Sun, planets, moons and small bodies</small></button>
+    <button data-journey="orion"><b>04</b><span>Orion Spur</span><small>our neighbourhood in the Milky Way</small></button>
+    <button data-journey="milky"><b>05</b><span>Milky Way</span><small>our home galaxy</small></button>
+    <button data-journey="local"><b>06</b><span>Local Group</span><small>galaxies bound together by gravity</small></button>
+    <button data-journey="laniakea"><b>07</b><span>Laniakea</span><small>a region defined by galaxy motions</small></button>
+    <button data-journey="web"><b>08</b><span>Cosmic Web</span><small>filaments, walls and voids</small></button>
+    <button data-journey="observable"><b>09</b><span>Observable Universe</span><small>the limit of what light can show us</small></button>
+  </div>
+  <p class="journey-stage__reflection">The larger the view, the smaller our place appears—and the greater the wonder.</p>
+</section>
       <div class="js-smooth">
          <header class="header">
             <div class="header__left">
@@ -1078,6 +1095,24 @@
   document.querySelectorAll('.cosmic-spacecraft[tabindex]').forEach(function(el){
     el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});
   });
+})();
+</script>
+<script>
+(function(){
+  var stage=document.querySelector('.cosmic-journey-stage'), detail=document.querySelector('[data-journey-detail]');
+  if(!stage||!detail)return;
+  var notes={
+   earth:'Earth rotates roughly once every 24 hours and is the only world currently known to support life.',
+   moon:'The Moon orbits Earth in about 27.3 days relative to the distant stars; gravity continually bends its path.',
+   solar:'The Sun, eight planets, moons, asteroids and comets travel together through the Milky Way.',
+   orion:'The Solar System sits in the Orion Spur, a smaller region between the Milky Way’s major spiral arms.',
+   milky:'The Sun takes roughly 230 million years to orbit the centre of the Milky Way.',
+   local:'The Local Group includes the Milky Way, Andromeda, Triangulum and many smaller galaxies.',
+   laniakea:'Laniakea is a large region identified through the motions of galaxies; it is not a giant planetary-style orbit.',
+   web:'Gravity and dark matter helped shape filaments, walls, clusters and vast cosmic voids.',
+   observable:'The observable universe is the region whose light or signals could have reached us. It is not a physical wall.'
+  };
+  document.querySelectorAll('[data-journey]').forEach(function(el){el.addEventListener('click',function(){detail.textContent=notes[el.dataset.journey]||'';document.querySelectorAll('[data-journey]').forEach(function(x){x.classList.remove('is-selected')});el.classList.add('is-selected');});});
 })();
 </script>
 </body>
