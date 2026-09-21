@@ -149,3 +149,5 @@ body:not(.cosmic-reveal) .header{opacity:1;transition:opacity .5s ease}
 @keyframes craft-drift{0%,100%{transform:translate3d(0,0,0) rotate(-2deg);opacity:.5}50%{transform:translate3d(35px,-18px,0) rotate(4deg);opacity:1}}
 @media(max-width:768px){.cosmic-spacecraft--voyager{left:5%;top:35%}.cosmic-spacecraft--webb{right:5%;top:29%}.cosmic-spacecraft--mars{left:5%;bottom:30%}.cosmic-spacecraft{font-size:7px}.cosmic-distance{right:5%;top:72%;font-size:7px}}
 @media(prefers-reduced-motion:reduce){.cosmic-spacecraft{animation:none}}
+
+.cosmic-spacecraft{cursor:pointer}.cosmic-spacecraft:focus{outline:1px solid #fff;outline-offset:6px;color:#fff}.cosmic-spacecraft:hover{color:#ff0c3a}
