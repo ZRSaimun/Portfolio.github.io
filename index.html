@@ -66,8 +66,17 @@
   <div class="cosmic-missions" data-mission-strip>
     <button type="button" data-mission="moon">MOON <small>APOLLO · CHANDRAYAAN · CHANG'E</small></button>
     <button type="button" data-mission="mars">MARS <small>ROVERS · ORBITERS · INGENUITY</small></button>
+    <button type="button" data-mission="asteroids">ASTEROIDS <small>OSIRIS-REx · DART · HAYABUSA2</small></button>
     <button type="button" data-mission="deep">DEEP SPACE <small>VOYAGER · HUBBLE · WEBB</small></button>
   </div>
+  <section class="mission-atlas" data-mission-atlas aria-hidden="true">
+    <button class="mission-atlas__close" type="button" data-atlas-close>×</button>
+    <p class="mission-atlas__eyebrow">MISSION ATLAS / HUMANITY LOOKING OUTWARD</p>
+    <h3 data-atlas-title>Moon</h3>
+    <p data-atlas-summary>The closest world to Earth—and the first place beyond Earth where humans and machines left their footprints.</p>
+    <div class="mission-atlas__timeline" data-atlas-timeline></div>
+    <div class="mission-atlas__footer"><span data-atlas-type>ROBOTIC · CREWED · SAMPLE RETURN</span><span data-atlas-source>NASA · ISRO · ESA · INTERNATIONAL MISSIONS</span></div>
+  </section>
   <p class="cosmic-reflection">SubhanAllah · look beyond ourselves</p>
 </section>
       <div class="js-smooth">
@@ -1027,12 +1036,22 @@
    saturn:{title:'Saturn',body:'Cassini revealed water-rich plumes from Enceladus and explored Titan’s methane lakes. Huygens landed on Titan in 2005.',facts:'GAS GIANT · CASSINI · HUYGENS'},
    neptune:{title:'Neptune',body:'Voyager 2 remains the only spacecraft to visit Neptune up close, revealing powerful atmospheric activity and a complex moon and ring system.',facts:'ICE GIANT · VOYAGER 2'}
   };
+
+  var missions={
+   moon:{title:'The Moon',summary:'The closest world to Earth—and the first place beyond Earth where humans and machines left their footprints.',type:'CREWED · ROBOTIC · SAMPLE RETURN',source:'NASA · ISRO · CHINA',items:[['1959','Luna 2 · first spacecraft to reach the lunar surface'],['1969','Apollo 11 · first humans on the Moon'],['2008','Chandrayaan-1 · widespread signs of lunar hydration'],['2023','Chandrayaan-3 · south-pole landing and sulphur detection'],['2024','Chang’e 6 · first far-side samples returned']]},
+   mars:{title:'Mars / The Red Planet',summary:'A world with evidence of ancient rivers, lakes and environments that may once have supported microscopic life.',type:'ROVERS · ORBITERS · AERIAL EXPLORATION',source:'NASA · ESA · UAE · CHINA · INDIA',items:[['1965','Mariner 4 · first close-up images'],['1997','Sojourner · first Mars rover'],['2004','Spirit and Opportunity · long-lived water evidence'],['2021','Ingenuity · first powered flight on another planet'],['2021—now','Perseverance · samples and potential biosignature research']]},
+   asteroids:{title:'Asteroids & Comets',summary:'Ancient material from the early solar system—small worlds that preserve clues about chemistry, water and origins.',type:'SAMPLE RETURN · IMPACT TEST · COMET LANDING',source:'NASA · JAXA · ESA',items:[['2014','Rosetta / Philae · orbited and landed on comet 67P'],['2020','Hayabusa2 · returned Ryugu material'],['2022','DART · changed an asteroid moon’s orbit'],['2023','OSIRIS-REx · returned Bennu material containing organic molecules']]},
+   deep:{title:'Beyond the Solar System',summary:'Humanity’s instruments now travel beyond the planets and look back toward the earliest galaxies, stars and planetary systems.',type:'INTERSTELLAR · TELESCOPIC · DEEP TIME',source:'NASA · ESA · INTERNATIONAL SCIENCE',items:[['1977','Voyager 1 and 2 · outer planets and interstellar space'],['1990','Hubble · distant galaxies, stars and planetary systems'],['2021','James Webb · early galaxies, stars and exoplanet atmospheres'],['∞','The questions continue beyond the edge of the map.']]}
+  };
   var info=document.querySelector('[data-cosmic-info]');
   var title=info.querySelector('h3'), body=info.querySelector('.cosmic-info__body'), facts=info.querySelector('.cosmic-info__facts');
   function open(key){var d=data[key];if(!d)return;title.textContent=d.title;body.textContent=d.body;facts.innerHTML='<span>PROFILE <b>'+d.facts+'</b></span>';info.classList.add('is-open');}
   document.querySelectorAll('[data-cosmic]').forEach(function(el){el.addEventListener('click',function(){open(el.dataset.cosmic);});});
   document.querySelector('[data-cosmic-close]').addEventListener('click',function(){info.classList.remove('is-open');});
-  document.querySelectorAll('[data-mission]').forEach(function(el){el.addEventListener('click',function(){open(el.dataset.mission==='moon'?'earth':el.dataset.mission==='mars'?'mars':'neptune');});});
+  var atlas=document.querySelector('[data-mission-atlas]'), atlasTitle=atlas.querySelector('[data-atlas-title]'), atlasSummary=atlas.querySelector('[data-atlas-summary]'), atlasTimeline=atlas.querySelector('[data-atlas-timeline]'), atlasType=atlas.querySelector('[data-atlas-type]'), atlasSource=atlas.querySelector('[data-atlas-source]');
+  function showMission(key){var m=missions[key];if(!m)return;atlasTitle.textContent=m.title;atlasSummary.textContent=m.summary;atlasType.textContent=m.type;atlasSource.textContent=m.source;atlasTimeline.innerHTML=m.items.map(function(x){return '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('');atlas.classList.add('is-open');atlas.setAttribute('aria-hidden','false');}
+  document.querySelectorAll('[data-mission]').forEach(function(el){el.addEventListener('click',function(){showMission(el.dataset.mission);});});
+  document.querySelector('[data-atlas-close]').addEventListener('click',function(){atlas.classList.remove('is-open');atlas.setAttribute('aria-hidden','true');});
   document.querySelector('[data-cosmic-focus]').addEventListener('click',function(){document.querySelector('.cosmic-hero').classList.add('is-focused');});
   window.addEventListener('scroll',function(){var y=Math.min(window.scrollY/600,1);var stage=document.querySelector('[data-cosmic-stage]');if(stage){stage.style.setProperty('--scroll-depth',y);stage.style.transform='translate(-50%,-50%) scale('+(1+y*.13)+') rotate('+(y*8-3)+'deg)';}});
 })();
