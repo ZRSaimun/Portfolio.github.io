@@ -1069,7 +1069,7 @@
   };
   var info=document.querySelector('[data-cosmic-info]');
   var title=info.querySelector('h3'), body=info.querySelector('.cosmic-info__body'), facts=info.querySelector('.cosmic-info__facts');
-  function open(key){var d=data[key];if(!d)return;title.textContent=d.title;body.textContent=d.body;facts.innerHTML='<span>PROFILE <b>'+d.facts+'</b></span><span>ORBIT <b>'+d.orbit+'</b></span><span>PERIOD <b>'+d.period+'</b></span>';info.classList.add('is-open');}
+  function open(key){var d=data[key];if(!d)return;title.textContent=d.title;body.textContent=d.body;facts.innerHTML='<span>PROFILE <b>'+d.facts+'</b></span><span>ORBIT <b>'+d.orbit+'</b></span><span>PERIOD <b>'+d.period+'</b></span><span class="cosmic-fact-note">Gravity bends motion into curved paths; it does not make every cosmic structure orbit one central object.</span>';info.classList.add('is-open');}
   document.querySelectorAll('[data-cosmic]').forEach(function(el){el.addEventListener('click',function(){open(el.dataset.cosmic);});});
   document.querySelector('[data-cosmic-close]').addEventListener('click',function(){info.classList.remove('is-open');});
   var atlas=document.querySelector('[data-mission-atlas]'), atlasTitle=atlas.querySelector('[data-atlas-title]'), atlasSummary=atlas.querySelector('[data-atlas-summary]'), atlasTimeline=atlas.querySelector('[data-atlas-timeline]'), atlasType=atlas.querySelector('[data-atlas-type]'), atlasSource=atlas.querySelector('[data-atlas-source]');
