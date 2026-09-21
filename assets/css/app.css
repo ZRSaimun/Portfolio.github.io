@@ -423,3 +423,18 @@ body[data-cosmic-selected="sun"] .cosmic-sun--hero{filter:drop-shadow(0 0 25px #
 
 /* Hide the unfinished legacy occult-era artwork from this respectful university archive. */
 .c-saimun__hero--baphomet,.c-saimun__hero--baphomet-text{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+
+/* Mobile archive header: preserve the old information without collisions. */
+@media(max-width:768px){
+ .header{z-index:120!important;overflow:visible!important}
+ .header__left{grid-template-columns:28px minmax(0,1fr) minmax(0,1fr)!important;align-items:start!important}
+ .header__logo{width:28px!important;min-width:28px!important}
+ .header__logo h1,.header__logo a{font-size:12px!important;line-height:.95!important}
+ .header__where,.header__mail{width:auto!important;min-width:0!important;overflow-wrap:anywhere!important}
+ .header__where p,.header__mail p{font-size:10px!important;line-height:1.18!important;white-space:normal!important}
+ .header__where a,.header__mail a{font-size:9px!important;line-height:1.15!important;max-width:100%!important}
+ .header__right{width:28px!important;min-width:28px!important}
+ .archive-symbol small{display:none!important}
+ .archive-symbol span{margin:0!important}
+ .c-saimun__hero{padding-top:18vw!important}
+}
