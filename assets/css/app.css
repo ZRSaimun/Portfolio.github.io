@@ -369,3 +369,6 @@ body.cosmic-journey-mode .cosmic-hero{opacity:0!important;visibility:hidden!impo
 
 /* Neutral footer creation mark replacing the legacy cross interaction. */
 .js__creation-mark{display:grid;place-items:center;min-height:56px}.creation-star{display:grid;place-items:center;width:30px;height:30px;border:1px solid rgba(255,12,58,.65);color:#ff0c3a;font-size:20px;transform:rotate(45deg);box-shadow:0 0 20px rgba(255,12,58,.2)}.creation-star::first-line{transform:rotate(-45deg)}
+
+/* Every cosmic scale is an interactive object. */
+.journey-visual__item{border:0;padding:0;background:transparent;color:inherit;font:inherit;cursor:pointer;pointer-events:auto;text-align:center}.journey-visual__item:focus-visible{outline:2px solid #fff;outline-offset:10px;border-radius:50%}.journey-visual__item:hover span,.journey-visual__item:focus-visible span{color:#fff;text-shadow:0 0 14px #ff0c3a}.journey-visual__item:hover i{filter:brightness(1.25);}
