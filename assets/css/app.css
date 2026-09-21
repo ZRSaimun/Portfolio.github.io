@@ -350,3 +350,12 @@ body.cosmic-journey-mode .journey-stage__header,body.cosmic-journey-mode .journe
 /* Respectful replacement for the old Saturn glyph. */
 .header__right .archive-symbol{display:flex;align-items:center;gap:8px;color:#fff;margin:0}.archive-symbol span{display:inline-grid;place-items:center;width:28px;height:28px;border:1px solid rgba(255,255,255,.55);transform:rotate(45deg);font-size:19px;color:#ff0c3a;line-height:1}.archive-symbol span::first-line{transform:rotate(-45deg)}.archive-symbol small{font:8px Arial,sans-serif;letter-spacing:.15em;color:rgba(255,255,255,.5)}
 @media(max-width:768px){.header__right .archive-symbol{gap:5px}.archive-symbol span{width:22px;height:22px;font-size:15px}.archive-symbol small{font-size:6px}}
+
+/* The archive console duplicated the observatory already shown at the front; keep the lower archive clean. */
+.archive-console{display:none!important}
+@media(max-width:768px){
+ .header{position:relative!important;display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:10px!important;padding:18px 6vw 0!important;min-height:76px!important}
+ .header__left{display:grid!important;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr)!important;gap:7px!important;align-items:start!important;width:calc(100% - 42px)!important}
+ .header__logo{grid-row:1 / span 2!important}.header__where,.header__mail{font-size:10px!important;line-height:1.2!important;min-width:0!important}.header__where p,.header__mail p{margin:0!important}.header__where a,.header__mail a{word-break:break-word!important}.header__availability,.header__role,.archive-mark{display:none!important}.header__right{flex:0 0 28px!important;margin:0!important}.header__right p{margin:0!important}
+ .c-saimun__hero--wrapper{padding-top:35px!important}
+}
