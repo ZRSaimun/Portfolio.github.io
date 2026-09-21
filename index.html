@@ -1056,5 +1056,18 @@
   window.addEventListener('scroll',function(){var y=Math.min(window.scrollY/600,1);var stage=document.querySelector('[data-cosmic-stage]');if(stage){stage.style.setProperty('--scroll-depth',y);stage.style.transform='translate(-50%,-50%) scale('+(1+y*.13)+') rotate('+(y*8-3)+'deg)';}});
 })();
 </script>
+<script>
+(function(){
+  var hero=document.querySelector('.cosmic-hero');
+  if(!hero)return;
+  function reveal(){
+    var active=window.scrollY>180;
+    document.body.classList.toggle('cosmic-reveal',active);
+    hero.setAttribute('aria-hidden',active?'false':'true');
+  }
+  window.addEventListener('scroll',reveal,{passive:true});
+  reveal();
+})();
+</script>
 </body>
 </html>
