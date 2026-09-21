@@ -137,3 +137,15 @@ body.cosmic-reveal .header{opacity:0;pointer-events:none;transition:opacity .5s 
 body:not(.cosmic-reveal) .header{opacity:1;transition:opacity .5s ease}
 .cosmic-hero .cosmic-planet,.cosmic-hero .cosmic-enter,.cosmic-hero .cosmic-missions button,.cosmic-hero .cosmic-info button,.cosmic-hero .mission-atlas button{pointer-events:auto}
 @media(max-width:768px){.cosmic-hero{height:100svh}.cosmic-hero__copy{top:12%}.cosmic-stage{top:57%}}
+
+/* Spacecraft layer for the cinematic transition */
+.cosmic-spacecraft{position:absolute;z-index:12;display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.58);font:8px Romana,serif;letter-spacing:.12em;white-space:nowrap;animation:craft-drift 13s ease-in-out infinite}
+.cosmic-spacecraft i{display:block;width:24px;height:5px;background:linear-gradient(90deg,#ff0c3a,rgba(255,255,255,.8));clip-path:polygon(0 50%,65% 0,100% 50%,65% 100%);box-shadow:0 0 14px #ff0c3a}
+.cosmic-spacecraft:after{content:"";position:absolute;right:100%;top:50%;width:100px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,12,58,.6));transform-origin:right center;transform:rotate(-6deg)}
+.cosmic-spacecraft--voyager{left:8%;top:27%;animation-duration:18s}.cosmic-spacecraft--voyager i{order:-1;transform:rotate(180deg)}
+.cosmic-spacecraft--webb{right:7%;top:22%;animation-delay:-5s}.cosmic-spacecraft--mars{left:11%;bottom:28%;animation-delay:-9s}
+.cosmic-distance{position:absolute;z-index:8;right:7%;top:66%;display:flex;flex-direction:column;gap:8px;color:rgba(255,255,255,.3);font:8px Romana,serif;letter-spacing:.16em;text-align:right}
+.cosmic-distance span:nth-child(2){color:rgba(255,12,58,.6)}.cosmic-distance span:before{content:"";display:inline-block;width:26px;height:1px;margin:0 8px 3px 0;background:currentColor}
+@keyframes craft-drift{0%,100%{transform:translate3d(0,0,0) rotate(-2deg);opacity:.5}50%{transform:translate3d(35px,-18px,0) rotate(4deg);opacity:1}}
+@media(max-width:768px){.cosmic-spacecraft--voyager{left:5%;top:35%}.cosmic-spacecraft--webb{right:5%;top:29%}.cosmic-spacecraft--mars{left:5%;bottom:30%}.cosmic-spacecraft{font-size:7px}.cosmic-distance{right:5%;top:72%;font-size:7px}}
+@media(prefers-reduced-motion:reduce){.cosmic-spacecraft{animation:none}}
