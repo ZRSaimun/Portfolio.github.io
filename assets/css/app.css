@@ -284,3 +284,19 @@ body.cosmic-journey-mode.journey-step-9 .journey-ladder button:nth-child(8){opac
 @keyframes journey-object-float{50%{transform:translateY(-18px) rotate(4deg)}}@keyframes journey-object-pulse{50%{transform:scale(1.1)}}@keyframes journey-moon-orbit{to{transform:rotate(360deg) translateX(55px) rotate(-360deg)}}@keyframes journey-ring-spin{to{transform:rotate(360deg)}}@keyframes journey-galaxy-spin{to{transform:rotate(338deg)}}@keyframes journey-cluster{50%{transform:translate(18px,-12px)}}@keyframes journey-web-pulse{50%{transform:scale(1.08) rotate(-12deg)}}@keyframes journey-universe{to{transform:rotate(360deg)}}
 @media(max-width:768px){.journey-visual{left:54%;top:32%;width:82vw;height:82vw}.journey-visual__earth i{width:92px;height:92px}.journey-visual__moon i{width:70px;height:70px}.journey-visual__moon b{width:170px;height:170px}.journey-visual__solar i{width:90px;height:90px}.journey-visual__solar b{width:210px;height:210px}.journey-visual__orion i,.journey-visual__milky i{width:260px;height:130px}.journey-visual__web i{width:290px;height:180px}.journey-visual__observable i{width:260px;height:260px}.journey-visual__item span{bottom:2%;font-size:8px}}
 @media(prefers-reduced-motion:reduce){.journey-visual__item i,.journey-visual__item b{animation:none}}
+
+/* Cinematic motion pass: every cosmic address is a moving system, not a static card. */
+.journey-visual{overflow:visible;isolation:isolate}
+.journey-visual:before,.journey-visual:after{content:"";position:absolute;inset:7%;border-radius:50%;border:1px solid rgba(255,255,255,.13);animation:journey-system-orbit 12s linear infinite;pointer-events:none}
+.journey-visual:after{inset:18% 3%;border-color:rgba(255,12,58,.18);transform:rotate(58deg) scaleY(.56);animation-duration:19s;animation-direction:reverse}
+.journey-visual__item:before,.journey-visual__item:after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff,120px 40px 0 1px #ff0c3a,-155px -65px 0 0 #8d7bff;animation:journey-particle-orbit 7s linear infinite;opacity:.8}
+.journey-visual__item:after{width:5px;height:5px;background:#ff0c3a;animation-duration:11s;animation-direction:reverse;box-shadow:0 0 10px #ff0c3a,90px -72px 0 1px #fff,-120px 75px 0 0 #5edbff}
+.journey-visual-step-1 .journey-visual__item:before,.journey-visual-step-1 .journey-visual__item:after,.journey-visual-step-2 .journey-visual__item:before,.journey-visual-step-2 .journey-visual__item:after,.journey-visual-step-3 .journey-visual__item:before,.journey-visual-step-3 .journey-visual__item:after{animation-duration:4s}
+.journey-visual-step-4 .journey-visual__item:before,.journey-visual-step-4 .journey-visual__item:after,.journey-visual-step-5 .journey-visual__item:before,.journey-visual-step-5 .journey-visual__item:after{animation-duration:8s}
+.journey-visual-step-6 .journey-visual__item:before,.journey-visual-step-6 .journey-visual__item:after,.journey-visual-step-7 .journey-visual__item:before,.journey-visual-step-7 .journey-visual__item:after{animation-duration:14s}
+.journey-visual-step-8 .journey-visual__item:before,.journey-visual-step-8 .journey-visual__item:after,.journey-visual-step-9 .journey-visual__item:before,.journey-visual-step-9 .journey-visual__item:after{animation-duration:22s}
+@keyframes journey-system-orbit{to{transform:rotate(360deg) rotateX(62deg)}}
+@keyframes journey-particle-orbit{to{transform:rotate(360deg) translateX(145px) rotate(-360deg)}}
+@media(max-width:768px){.journey-visual:before{inset:12%}.journey-visual:after{inset:24% 0}.journey-visual__item:before{animation-name:journey-particle-orbit-mobile}.journey-visual__item:after{animation-name:journey-particle-orbit-mobile-reverse}}
+@keyframes journey-particle-orbit-mobile{to{transform:rotate(360deg) translateX(105px) rotate(-360deg)}}
+@keyframes journey-particle-orbit-mobile-reverse{to{transform:rotate(-360deg) translateX(82px) rotate(360deg)}}
