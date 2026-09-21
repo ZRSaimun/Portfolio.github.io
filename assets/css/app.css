@@ -125,3 +125,15 @@
 .mission-atlas{position:absolute;z-index:30;inset:10% 8% 10% auto;width:min(520px,48vw);padding:34px;background:rgba(3,3,8,.94);border:1px solid rgba(255,12,58,.6);box-shadow:0 0 70px rgba(255,12,58,.16),inset 0 0 40px rgba(255,12,58,.04);backdrop-filter:blur(22px);opacity:0;transform:translateX(30px);pointer-events:none;transition:.5s}
 .mission-atlas.is-open{opacity:1;transform:translateX(0);pointer-events:auto}.mission-atlas__close{position:absolute;right:15px;top:10px;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}.mission-atlas__eyebrow{color:#ff0c3a!important;font:9px Romana,serif!important;letter-spacing:.16em}.mission-atlas h3{margin:28px 0 12px!important;font:clamp(34px,4vw,58px)/.9 Walbaum120Pro,serif!important}.mission-atlas>p:not(.mission-atlas__eyebrow){max-width:420px;color:rgba(255,255,255,.7);font-size:14px;line-height:1.45}.mission-atlas__timeline{margin-top:24px;border-top:1px solid rgba(255,255,255,.16);max-height:250px;overflow:auto}.mission-atlas__timeline div{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:12px;line-height:1.3}.mission-atlas__timeline b{color:#ff0c3a;font-weight:400}.mission-atlas__timeline span{color:rgba(255,255,255,.78)}.mission-atlas__footer{display:flex;justify-content:space-between;gap:15px;margin-top:20px;color:rgba(255,255,255,.42);font:8px/1.3 Romana,serif;letter-spacing:.06em}.mission-atlas__footer span:last-child{text-align:right}
 @media(max-width:768px){.mission-atlas{inset:7% 6% 16%;width:auto;padding:25px 20px}.mission-atlas h3{margin-top:24px!important}.mission-atlas__timeline{max-height:190px}.mission-atlas__footer{display:block}.mission-atlas__footer span{display:block;margin-top:8px}.mission-atlas__footer span:last-child{text-align:left}.cosmic-missions{bottom:5vh}}
+
+/* Scroll narrative: original portfolio first, cosmic world after the first reveal. */
+.cosmic-hero{position:fixed;inset:0;width:100%;height:100svh;min-height:0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .9s ease,visibility .9s ease;z-index:90}
+.cosmic-hero:before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);opacity:0;transition:opacity .9s ease;pointer-events:none}
+body.cosmic-reveal .cosmic-hero{opacity:1;visibility:visible;pointer-events:auto}
+body.cosmic-reveal .cosmic-hero:before{opacity:1}
+body.cosmic-reveal .js-smooth{opacity:.05;transition:opacity .9s ease;pointer-events:none}
+body:not(.cosmic-reveal) .js-smooth{opacity:1;transition:opacity .9s ease}
+body.cosmic-reveal .header{opacity:0;pointer-events:none;transition:opacity .5s ease}
+body:not(.cosmic-reveal) .header{opacity:1;transition:opacity .5s ease}
+.cosmic-hero .cosmic-planet,.cosmic-hero .cosmic-enter,.cosmic-hero .cosmic-missions button,.cosmic-hero .cosmic-info button,.cosmic-hero .mission-atlas button{pointer-events:auto}
+@media(max-width:768px){.cosmic-hero{height:100svh}.cosmic-hero__copy{top:12%}.cosmic-stage{top:57%}}
