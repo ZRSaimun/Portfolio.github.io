@@ -1083,7 +1083,9 @@
   if(!hero)return;
   function reveal(){
     var revealStart=Math.max(140,window.innerHeight*.22); var revealEnd=Math.max(revealStart+window.innerHeight*.95,window.innerHeight*1.65); var active=window.scrollY>revealStart && window.scrollY<revealEnd;
+    var journeyEnd=revealEnd+window.innerHeight*1.35; var journey=window.scrollY>=revealEnd && window.scrollY<journeyEnd;
     document.body.classList.toggle('cosmic-reveal',active);
+    document.body.classList.toggle('cosmic-journey-mode',journey);
     hero.setAttribute('aria-hidden',active?'false':'true');
   }
   window.addEventListener('scroll',reveal,{passive:true});
