@@ -342,3 +342,7 @@ body.cosmic-journey-mode .journey-stage__header,body.cosmic-journey-mode .journe
  .journey-stage__reflection{display:none}
  .journey-fact-panel{z-index:30;bottom:3vh;max-height:31vh;overflow:auto}
 }
+
+/* Observatory flight HUD. */
+.journey-flight-hud{position:absolute;z-index:25;right:8vw;top:7vh;width:min(220px,24vw);font:9px Arial,sans-serif;letter-spacing:.16em;color:rgba(255,255,255,.52);opacity:.75}.journey-flight-hud__top{display:flex;justify-content:space-between;gap:12px}.journey-flight-hud__top b{color:#ff0c3a;font-weight:400}.journey-flight-hud__bar{height:2px;margin:9px 0 8px;background:rgba(255,255,255,.16);overflow:hidden}.journey-flight-hud__bar i{display:block;width:11%;height:100%;background:#ff0c3a;box-shadow:0 0 12px #ff0c3a;transition:width .6s ease}.journey-flight-hud__label{font-size:8px;letter-spacing:.24em;color:rgba(255,255,255,.7)}
+@media(max-width:768px){.journey-flight-hud{right:8vw;top:8vh;width:145px;font-size:8px}.journey-flight-hud__label{font-size:7px}}
