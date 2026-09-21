@@ -45,13 +45,14 @@
   </div>
   <div class="cosmic-stage" data-cosmic-stage>
     <div class="cosmic-stage__halo"></div>
-    <div class="cosmic-sun--hero"><b></b></div>
+    <button class="cosmic-sun--hero" data-cosmic="sun" aria-label="Explore the Sun"><b></b></button>
     <div class="cosmic-orbit--hero orbit-mercury"><button class="cosmic-planet planet-mercury" data-cosmic="mercury" aria-label="Explore Mercury"></button></div>
     <div class="cosmic-orbit--hero orbit-venus"><button class="cosmic-planet planet-venus" data-cosmic="venus" aria-label="Explore Venus"></button></div>
     <div class="cosmic-orbit--hero orbit-earth"><button class="cosmic-planet planet-earth" data-cosmic="earth" aria-label="Explore Earth"></button></div>
     <div class="cosmic-orbit--hero orbit-mars"><button class="cosmic-planet planet-mars" data-cosmic="mars" aria-label="Explore Mars"></button></div>
     <div class="cosmic-orbit--hero orbit-jupiter"><button class="cosmic-planet planet-jupiter" data-cosmic="jupiter" aria-label="Explore Jupiter"></button></div>
     <div class="cosmic-orbit--hero orbit-saturn"><button class="cosmic-planet planet-saturn" data-cosmic="saturn" aria-label="Explore Saturn"></button></div>
+    <div class="cosmic-orbit--hero orbit-uranus"><button class="cosmic-planet planet-uranus" data-cosmic="uranus" aria-label="Explore Uranus"></button></div>
     <div class="cosmic-orbit--hero orbit-neptune"><button class="cosmic-planet planet-neptune" data-cosmic="neptune" aria-label="Explore Neptune"></button></div>
     <div class="cosmic-route"></div>
   </div>
@@ -1055,7 +1056,9 @@
    mars:{title:'Mars',body:'Mars once had rivers and lakes. Viking, Spirit, Opportunity, Curiosity, InSight, Hope, Zhurong and Perseverance have transformed our understanding of its geology and ancient habitability.',facts:'TERRESTRIAL · ROVERS · ORBITERS',orbit:'Sun',period:'687 Earth days'},
    jupiter:{title:'Jupiter',body:'The giant planet and its moons. Galileo and Juno studied its atmosphere and magnetic field; Europa remains one of the most important ocean-world targets.',facts:'GAS GIANT · GALILEO · JUNO',orbit:'Sun',period:'11.86 Earth years'},
    saturn:{title:'Saturn',body:'Cassini revealed water-rich plumes from Enceladus and explored Titan’s methane lakes. Huygens landed on Titan in 2005.',facts:'GAS GIANT · CASSINI · HUYGENS',orbit:'Sun',period:'29.45 Earth years'},
-   neptune:{title:'Neptune',body:'Voyager 2 remains the only spacecraft to visit Neptune up close, revealing powerful atmospheric activity and a complex moon and ring system.',facts:'ICE GIANT · VOYAGER 2',orbit:'Sun',period:'164.8 Earth years'}
+   uranus:{title:'Uranus',body:'An ice giant rotating on its side. Voyager 2 remains the only spacecraft to visit Uranus up close, revealing rings, moons and a cold active atmosphere.',facts:'ICE GIANT · VOYAGER 2',orbit:'Sun',period:'84 Earth years'},
+   neptune:{title:'Neptune',body:'Voyager 2 remains the only spacecraft to visit Neptune up close, revealing powerful atmospheric activity and a complex moon and ring system.',facts:'ICE GIANT · VOYAGER 2',orbit:'Sun',period:'164.8 Earth years'},
+   sun:{title:'The Sun',body:'The star at the centre of our system. Its gravity guides the planets, while its energy makes life on Earth possible. The Sun itself travels around the Milky Way.',facts:'STAR · PARKER SOLAR PROBE',orbit:'Milky Way centre',period:'About 230 million years'}
   };
 
   var missions={
