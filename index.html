@@ -1061,7 +1061,7 @@
   var hero=document.querySelector('.cosmic-hero');
   if(!hero)return;
   function reveal(){
-    var active=window.scrollY>180;
+    var revealStart=Math.max(140,window.innerHeight*.22); var revealEnd=Math.max(revealStart+window.innerHeight*.95,window.innerHeight*1.65); var active=window.scrollY>revealStart && window.scrollY<revealEnd;
     document.body.classList.toggle('cosmic-reveal',active);
     hero.setAttribute('aria-hidden',active?'false':'true');
   }
