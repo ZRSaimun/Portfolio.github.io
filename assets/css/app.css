@@ -461,3 +461,11 @@ body[data-cosmic-selected="sun"] .cosmic-sun--hero{filter:drop-shadow(0 0 25px #
   body.cosmic-desktop-native .c-saimun__hero--words,
   body.cosmic-desktop-native .c-saimun__hero--words svg{visibility:hidden!important;opacity:0!important;pointer-events:none!important}
 }
+
+
+/* Desktop cleanup: keep the main cosmic journey and archive content, remove auxiliary side/bottom overlays. */
+@media(min-width:769px){
+  .celestial-observatory,
+  .modern-art-layer,
+  .archive-console{display:none!important;visibility:hidden!important;pointer-events:none!important}
+}
