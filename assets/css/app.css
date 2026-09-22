@@ -446,3 +446,18 @@ body[data-cosmic-selected="sun"] .cosmic-sun--hero{filter:drop-shadow(0 0 25px #
 .c-saimun__works--single .c-saimun__works--year,
 .c-saimun__works--single .c-saimun__works--single-hover{visibility:visible!important;opacity:1!important}
 .c-saimun__works--single .c-saimun__works--single-hover{transform:translate3d(-50%,-50%,0)!important}
+
+
+/* Desktop cosmic journey repair: use the same central visual language as mobile. */
+@media(min-width:769px){
+  body.cosmic-desktop-native{overflow:auto!important;height:auto!important}
+  body.cosmic-desktop-native .js-smooth{position:relative!important;top:auto!important;left:auto!important;width:auto!important;height:auto!important;transform:none!important}
+  body.cosmic-desktop-native .cosmic-journey-stage{position:fixed!important;inset:0!important}
+  body.cosmic-desktop-native .journey-visual{left:52%!important;top:50%!important;width:min(46vw,680px)!important;height:min(46vw,680px)!important;z-index:8!important;pointer-events:auto!important}
+  body.cosmic-desktop-native .journey-stage__copy{left:6vw!important;top:18%!important;width:28%!important}
+  body.cosmic-desktop-native .journey-ladder{right:4vw!important;width:31%!important}
+  body.cosmic-desktop-native .journey-stage__header{left:4vw!important}
+  body.cosmic-desktop-native .journey-stage__reflection{left:6vw!important}
+  body.cosmic-desktop-native .c-saimun__hero--words,
+  body.cosmic-desktop-native .c-saimun__hero--words svg{visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+}
