@@ -1102,7 +1102,7 @@
 
 (function(){var hud=document.querySelector('[data-journey-hud]'),step=hud&&hud.querySelector('[data-journey-hud-step]'),fill=hud&&hud.querySelector('[data-journey-hud-fill]'),label=hud&&hud.querySelector('[data-journey-hud-label]');if(!hud)return;var names=['EARTH','EARTH–MOON SYSTEM','SOLAR SYSTEM','ORION SPUR','MILKY WAY','LOCAL GROUP','LANIAKEA','COSMIC WEB','OBSERVABLE UNIVERSE'];var update=function(){var body=document.body;if(!body.classList.contains('cosmic-journey-mode')){hud.setAttribute('aria-hidden','true');return}var n=1;for(var i=1;i<=9;i++)if(body.classList.contains('journey-step-'+i))n=i;hud.setAttribute('aria-hidden','false');step.textContent=(n<10?'0':'')+n+' / 09';label.textContent=names[n-1];fill.style.width=((n/9)*100)+'%'};window.addEventListener('scroll',update,{passive:true});update();})();
 
-(function(){var hero=document.querySelector('[data-cosmic-stage]');if(!hero)return;window.addEventListener('pointermove',function(e){if(window.innerWidth<769)return;var x=(e.clientX/window.innerWidth-.5)*2,y=(e.clientY/window.innerHeight-.5)*2;document.documentElement.style.setProperty('--camera-x',x.toFixed(3));document.documentElement.style.setProperty('--camera-y',y.toFixed(3));},{passive:true});})();
+(function(){var hero=document.querySelector('[data-cosmic-stage]');if(!hero)return;window.addEventListener('pointermove',function(e){if(window.innerWidth<600)return;var x=(e.clientX/window.innerWidth-.5)*2,y=(e.clientY/window.innerHeight-.5)*2;document.documentElement.style.setProperty('--camera-x',x.toFixed(3));document.documentElement.style.setProperty('--camera-y',y.toFixed(3));},{passive:true});})();
 
 (function(){var button=document.querySelector('[data-cosmic-sound]');if(!button)return;var ctx,gain,osc,lfo,lfoGain;function start(){ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();gain=ctx.createGain();gain.gain.value=.0001;gain.connect(ctx.destination);osc=ctx.createOscillator();osc.type='sine';osc.frequency.value=90;osc.connect(gain);lfo=ctx.createOscillator();lfo.frequency.value=.08;lfoGain=ctx.createGain();lfoGain.gain.value=.012;lfo.connect(lfoGain);lfoGain.connect(gain.gain);osc.start();lfo.start();gain.gain.exponentialRampToValueAtTime(.055,ctx.currentTime+.8);button.setAttribute('aria-pressed','true');button.innerHTML='<span>◉</span> SOUND ON';button.classList.add('is-on')}function stop(){if(!ctx)return;gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.5);button.setAttribute('aria-pressed','false');button.innerHTML='<span>◌</span> SOUND OFF';button.classList.remove('is-on')}button.addEventListener('click',function(){button.classList.contains('is-on')?stop():start()});})();
 
@@ -1132,7 +1132,7 @@
 <script>
 (function(){
   /* Desktop uses native scrolling so the cosmic stage can receive real scroll progress. */
-  if(window.innerWidth<769)return;
+  if(window.innerWidth<600)return;
   function enableNativeDesktop(){
     document.body.classList.add('cosmic-desktop-native');
     document.body.classList.remove('is-virtual-scroll');
@@ -1142,15 +1142,15 @@
     if(smooth){smooth.style.position='relative';smooth.style.top='auto';smooth.style.left='auto';smooth.style.width='auto';smooth.style.height='auto';smooth.style.transform='none';}
   }
   enableNativeDesktop();
-  window.addEventListener('resize',function(){if(window.innerWidth>=769)enableNativeDesktop();},{passive:true});
+  window.addEventListener('resize',function(){if(window.innerWidth>=600)enableNativeDesktop();},{passive:true});
   document.addEventListener('wheel',function(e){
-    if(window.innerWidth<769)return;
+    if(window.innerWidth<600)return;
     e.preventDefault(); e.stopImmediatePropagation();
     window.scrollBy(0,e.deltaY);
   },{capture:true,passive:false});
   var last=-1;
   function keepNative(){
-    if(window.innerWidth>=769){
+    if(window.innerWidth>=600){
       enableNativeDesktop();
       if(last!==window.scrollY){last=window.scrollY;window.dispatchEvent(new Event('scroll'));}
     }
