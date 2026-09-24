@@ -1159,5 +1159,30 @@
   requestAnimationFrame(keepNative);
 })();
 </script>
+<script>
+(function(){
+  /* iPad/tablet fallback: the legacy mobile scroll engine can skip the fixed journey. */
+  if(window.innerWidth<600 || window.innerWidth>1024)return;
+  var body=document.body, duration=function(){return Math.max(window.innerHeight*3.2,1800)};
+  function update(){
+    var y=window.scrollY||window.pageYOffset||0, end=duration();
+    if(y<end){
+      body.classList.add('tablet-cosmic-mode','cosmic-journey-mode');
+      for(var n=1;n<=9;n++)body.classList.remove('journey-step-'+n);
+      var progress=Math.max(0,Math.min(.999,y/end)), step=Math.floor(progress*9)+1;
+      body.classList.add('journey-step-'+step);
+      var visual=document.querySelector('[data-journey-visual]');
+      if(visual){visual.classList.remove.apply(visual,[].slice.call(visual.classList).filter(function(x){return x.indexOf('journey-visual-step-')===0}));visual.classList.add('journey-visual-step-'+step);}
+    }else{
+      body.classList.remove('tablet-cosmic-mode');
+      body.classList.remove('cosmic-journey-mode');
+      for(var n=1;n<=9;n++)body.classList.remove('journey-step-'+n);
+    }
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update,{passive:true});
+  update();
+})();
+</script>
 </body>
 </html>
