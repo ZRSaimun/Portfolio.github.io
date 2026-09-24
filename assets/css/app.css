@@ -469,3 +469,24 @@ body[data-cosmic-selected="sun"] .cosmic-sun--hero{filter:drop-shadow(0 0 25px #
   .modern-art-layer,
   .archive-console{display:none!important;visibility:hidden!important;pointer-events:none!important}
 }
+
+
+/* Tablet/iPad cosmic journey activation. Phones and laptops keep their existing behaviour. */
+@media (min-width:600px) and (max-width:1024px){
+  body.tablet-cosmic-mode .cosmic-journey-stage{
+    opacity:1!important;visibility:visible!important;pointer-events:auto!important;
+  }
+  body.tablet-cosmic-mode .js-smooth{
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  }
+  body.tablet-cosmic-mode .journey-visual{
+    left:50%!important;top:48%!important;width:min(58vw,520px)!important;height:min(58vw,520px)!important;
+  }
+  body.tablet-cosmic-mode .journey-stage__copy{
+    left:7vw!important;top:13%!important;width:84%!important;
+  }
+  body.tablet-cosmic-mode .journey-stage__copy h2{font-size:clamp(42px,8vw,72px)!important}
+  body.tablet-cosmic-mode .journey-ladder{
+    left:7vw!important;right:7vw!important;top:58%!important;width:auto!important;height:34%!important;
+  }
+}
